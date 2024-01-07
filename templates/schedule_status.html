@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block content %}
+<h1>Task List</h1>
+<ul class="list-group">
+  {% for task in tasks %}
+  <li
+    class="list-group-item{% if task.is_completed %} list-group-item-success{% endif %}"
+  >
+    {{ task.title }}
+    <span class="float-right">
+      <a
+        href="{{ url_for('task.complete_task', task_id=task.id) }}"
+        class="btn btn-sm btn-success"
+        >Complete</a
+      >
+      <a
+        href="{{ url_for('task.delete_task', task_id=task.id) }}"
+        class="btn btn-sm btn-danger"
+        >Delete</a
+      >
+    </span>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

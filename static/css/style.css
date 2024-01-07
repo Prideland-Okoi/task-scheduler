@@ -1,0 +1,145 @@
+/* Define a global font family */
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Style the navigation bar */
+.navbar {
+  background-color: #007bff; /* Navbar background color */
+  color: #fff; /* Navbar text color */
+}
+
+.navbar a {
+  color: #ef1414; /* Navbar link text color */
+}
+
+/* Style flash messages */
+.flashes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.flashes li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #1e0bad;
+  border-radius: 5px;
+}
+
+.flash-success {
+  background-color: #087d23;
+  border-color: #067921;
+  color: #0d8d2b;
+}
+
+.flash-danger {
+  background-color: #450308;
+  border-color: #dd0c21;
+  color: #721c24;
+}
+
+/* Style the task list */
+.list-group-item {
+  margin-bottom: 5px;
+}
+
+.list-group-item-success {
+  background-color: #d4edda; /* Completed task background color */
+  border-color: #c3e6cb; /* Completed task border color */
+}
+
+/* Style form elements */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Add some spacing around buttons */
+.btn {
+  margin-right: 5px;
+}
+
+/* Style the form error messages */
+.field-errors {
+  color: #dc3545;
+  font-size: 0.875rem;
+}
+
+/* Customize the appearance of the form fields */
+.form-control {
+  border-radius: 5px;
+}
+
+/* Style the footer */
+footer {
+  text-align: center;
+  background-color: #f8f9fa; /* Footer background color */
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.calendar-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Create a two-column grid with equal width columns */
+  gap: 20px; /* Add some spacing between the columns */
+  align-items: flex-start; /* Align items to the top of each column */
+}
+
+.calendar {
+  font-family: Arial, sans-serif;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.calendar-body table {
+  width: 100%;
+}
+
+.calendar-body table th {
+  background-color: #eee;
+}
+
+.calendar-body table td {
+  text-align: center;
+  padding: 10px;
+}
+
+/* CSS for the task counts container */
+.task-counts {
+  background-color: #f0f0f0; /* Background color */
+  padding: 10px; /* Padding around the counts */
+  border: 1px solid #ccc; /* Border for the container */
+  border-radius: 5px; /* Rounded corners */
+  text-align: center; /* Center-align the counts */
+}
+
+/* Style for the completed task count */
+.task-counts p:first-child {
+  color: #00cc00; /* Green color for completed tasks */
+}
+
+/* Style for the uncompleted task count */
+.task-counts p:last-child {
+  color: #cc0000; /* Red color for uncompleted tasks */
+}
+
+/* .calendar-date {
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.calendar-date:hover {
+  background-color: lightblue;
+} */

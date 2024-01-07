@@ -1,0 +1,34 @@
+{% extends "base.html" %} {% block content %}
+<h1>Tasks for {{ date }}</h1>
+<ul class="list-group">
+  {% if tasks %} {% for task in tasks %}
+  <li
+    class="list-group-item{% if task.is_completed %} list-group-item-success{% endif %}"
+  >
+    <strong>{{ task.title }}</strong>
+    <p>{{ task.description }}</p>
+    <p>Due Date: {{ task.due_date.strftime('%Y-%m-%d') }}</p>
+    {% if not task.is_completed %}
+    <a
+      href="{{ url_for('task.complete_task', task_id=task.id) }}"
+      class="btn btn-sm btn-success"
+      >Complete</a
+    >
+    <a
+      href="{{ url_for('task.edit_task', task_id=task.id) }}"
+      class="btn btn-sm btn-primary"
+      >Edit</a
+    >
+    {% endif %}
+
+    <a
+      href="{{ url_for('task.delete_task', task_id=task.id) }}"
+      class="btn btn-sm btn-danger"
+      >Delete</a
+    >
+  </li>
+  {% endfor %} {% else %}
+  <span>No Task Due for Seleted Date</span>
+  {% endif %}
+</ul>
+{% endblock content %}

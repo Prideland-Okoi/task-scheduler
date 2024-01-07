@@ -1,0 +1,72 @@
+pipeline {
+    agent any
+
+    environment {
+        FLASK_ENV = 'production'
+        PYTHONUNBUFFERED = '1'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Check out the code from your version control system (e.g., Git)
+                checkout scm
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                // Lint the code using flake8
+                script {
+                    docker.image('python:3.8-slim').inside {
+                        sh 'pip install flake8'
+                        sh 'flake8 task-scheduler/app'
+                    }
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Use a Python Docker image to build the application
+                script {
+                    docker.image('python:3.8-slim').inside('-u root') {
+                        sh 'pip install --upgrade pip'
+                        sh 'pip install -r task-scheduler/requirements.txt'
+                    }
+                }
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run your tests here
+                script {
+                    docker.image('python:3.8-slim').inside {
+                        sh 'python task-scheduler/app/tests/test_routes.py'
+                    }
+                }
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Deploy your Flask application
+                script {
+                    docker.image('python:3.8-slim').inside {
+                        sh 'python scheduler-task/app.py &'
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            // Additional steps to perform on success
+        }
+        failure {
+            // Additional steps to perform on failure
+        }
+    }
+}

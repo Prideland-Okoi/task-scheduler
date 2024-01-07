@@ -1,0 +1,27 @@
+{% extends "base.html" %} {% block content %}
+<h1>Edit Task</h1>
+<form
+  method="post"
+  action="{{ url_for('task.edit_task', task_id=task.id) }}"
+  class="form"
+>
+  {{ form.hidden_tag() }}
+  <div class="form-group">
+    {{ form.title.label(class="form-control-label") }} {{
+    form.title(class="form-control", placeholder="Title", required="required")
+    }}
+  </div>
+  <div class="form-group">
+    {{ form.description.label(class="form-control-label") }} {{
+    form.description(class="form-control", placeholder="Description") }}
+  </div>
+  <div class="form-group">
+    {{ form.due_date.label(class="form-control-label") }} {{
+    form.due_date(class="form-control", placeholder="Due Date",
+    required="required") }}
+  </div>
+  <div class="form-group">
+    {{ form.submit(class="btn btn-primary", value="Save Changes") }}
+  </div>
+</form>
+{% endblock %}
